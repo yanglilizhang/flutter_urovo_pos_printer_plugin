@@ -13,4 +13,4 @@ For help getting started with Flutter development, view the
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-PrintManager or Device [Ref](https://www.urovo.com/developer/android/device/PrinterManager.html)
+PrintManager or Device [urovo.com](https://www.urovo.com/developer/android/device/PrinterManager.html)

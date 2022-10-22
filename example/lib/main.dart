@@ -77,32 +77,32 @@ class _MyAppState extends State<MyApp> {
                 child: const Text('Print Initialize')),
             OutlinedButton(
                 onPressed: () async {
-                  String? print = await _flutterUrovoPosPrinterPlugin.print();
+                  bool print = await _flutterUrovoPosPrinterPlugin.printTest()??false;
                   debugPrint('--------------------');
-                  debugPrint(print);
+                  print?debugPrint('Print ready'):debugPrint('Print not found');
                   setState(() {
-                    status=print!;
+                    status=status=print?'Print ready':'Print not found';
                   });
                 },
                 child: const Text('Print')),
             OutlinedButton(
                 onPressed: () async {
-                  int? status = await _flutterUrovoPosPrinterPlugin.getStatus();
+                  var state = await _flutterUrovoPosPrinterPlugin.getStatus();
                   debugPrint('--------Get Status------------');
-                  debugPrint(status.toString());
+                  debugPrint('Print Status=$state');
                   setState(() {
-                    status=status!;
+                    status='Print Status$status';
                   });
                 },
                 child: const Text('Get Status')),
             OutlinedButton(
                 onPressed: () async {
-                  final setup =
-                  await _flutterUrovoPosPrinterPlugin.setupPage(height: 348, width: -1);
+                  final state =
+                  await _flutterUrovoPosPrinterPlugin.setupPage(height: 348, width: -1)??false;
                   debugPrint('--------Setup page------------');
-                  debugPrint(setup.toString());
+                  state?debugPrint('Print Setup page'):debugPrint('Print not found');
                   setState(() {
-                    status=setup.toString();
+                    status=status=state?'Print Setup page':'Print not found';
                   });
                 },
                 child: const Text('setup page')),
@@ -112,7 +112,7 @@ class _MyAppState extends State<MyApp> {
                   debugPrint('--------drawline------------');
                   _flutterUrovoPosPrinterPlugin.drawLine(
                       x0: 30, y0: 20, x1: 10, y1: 30, lineWidth: 89);
-                  _flutterUrovoPosPrinterPlugin.printPage(0);
+                  String respond = await _flutterUrovoPosPrinterPlugin.printPage(rotate: 0)??'';
                   setState(() {
                     status='draw line ok';
                   });
@@ -120,11 +120,11 @@ class _MyAppState extends State<MyApp> {
                 child: const Text('Draw Li    ne')),
             OutlinedButton(
                 onPressed: () async {
-                  int? dis = await _flutterUrovoPosPrinterPlugin.dispose();
+                  bool state = await _flutterUrovoPosPrinterPlugin.dispose()??false;
                   debugPrint('-------dispose------------');
-                  debugPrint(dis.toString());
+                  state?debugPrint('Print Status'):debugPrint('Print not found');
                   setState(() {
-                    status='printer closed';
+                    status=status=state?'Print Status':'Print not found';
                   });
                 },
                 child: const Text('Dispose')),
@@ -138,15 +138,15 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   await _flutterUrovoPosPrinterPlugin.setupPage(height: 384, width: -1);
                   await _flutterUrovoPosPrinterPlugin.drawText(
-                      data: "Hello",
+                      data: "Hello\nHi",
                       x: 200,
                       y: 200,
                       fontName: "simsun",
-                      fontSize: 14,
+                      fontSize: 24,
                       isBold: true,
                       isItalic: false,
                       rotate: 0);
-                  await _flutterUrovoPosPrinterPlugin.printPage(0);
+                  String respond = await _flutterUrovoPosPrinterPlugin.printPage(rotate: 0)??'';
                   debugPrint('-------drawText------------');
                   setState(() {
                     status='draw text ok';
@@ -162,7 +162,7 @@ class _MyAppState extends State<MyApp> {
                   final resImage = await _flutterUrovoPosPrinterPlugin.drawBitmap(
                       image: image.path, xDest: 100, yDest: 100);
                   debugPrint(resImage.toString());
-                  await _flutterUrovoPosPrinterPlugin.printPage(0);
+                  String respond = await _flutterUrovoPosPrinterPlugin.printPage(rotate: 0)??'';
 
                   debugPrint('-------Draw Bitmap------------');
                   setState(() {

@@ -31,53 +31,53 @@ abstract class FlutterUrovoPosPrinterPluginPlatform extends PlatformInterface {
     throw UnimplementedError('initPrinter() has not been implemented.');
   }
 
-  Future<String?> print() {
-    throw UnimplementedError('print() has not been implemented.');
+  Future<bool?> printTest() {
+    throw UnimplementedError('printTest() has not been implemented.');
   }
 
-  Future<int?> getStatus() {
+  Future<String?> getStatus() {
     throw UnimplementedError('getStatus() has not been implemented.');
   }
 
-  Future<int?> dispose() {
+  Future<bool?> dispose() {
     throw UnimplementedError('dispose() has not been implemented.');
   }
 
-  Future<int?> setupPage({required int height, required int width}) {
+  Future<bool?> setupPage({required int height, required int width}) {
     throw UnimplementedError('setupPage() has not been implemented.');
   }
 
-  Future<int?> setGrayLevel(int level) {
+  Future<bool?> setGrayLevel({required int level}) {
     throw UnimplementedError('setGrayLevel() has not been implemented.');
   }
 
-  Future<int?> paperFeed(int length) {
+  Future<bool?> paperFeed({required int length}) {
     throw UnimplementedError('paperFeed() has not been implemented.');
   }
 
-  Future<int?> setSpeedLevel(int level) {
+  Future<bool?> setSpeedLevel({required int level}) {
     throw UnimplementedError('setSpeedLevel() has not been implemented.');
   }
 
-  Future<int?> clearPage() {
+  Future<bool?> clearPage() {
     throw UnimplementedError('clearPage() has not been implemented.');
   }
 
-  Future<int?> printPage(int rotate) {
+  Future<String?> printPage({required int rotate}) {
     throw UnimplementedError('printPage() has not been implemented.');
   }
 
-  Future<int?> drawLine(
+  Future<bool?> drawLine(
       {required int x0, required int y0, required int x1, required int y1, required int lineWidth}) {
     throw UnimplementedError('drawLine() has not been implemented.');
   }
 
-  Future<int?> drawText(
+  Future<bool?> drawText(
       {required String data, required int x, required int y, required String fontName, required int fontSize, required bool isBold, required bool isItalic, required int rotate}) {
     throw UnimplementedError('drawText() has not been implemented.');
   }
 
-  Future<int?> drawTextEx({required String data,
+  Future<bool?> drawTextEx({required String data,
     required int x,
     required int y,
     required int width,
@@ -90,17 +90,17 @@ abstract class FlutterUrovoPosPrinterPluginPlatform extends PlatformInterface {
     throw UnimplementedError('drawTextEx() has not been implemented.');
   }
 
-  Future<int?> drawBarcode(
+  Future<bool?> drawBarcode(
       {required String data, required int x, required int y, required int barcodeType, required int width, required int height, required int rotate}) {
     throw UnimplementedError('drawBarcode() has not been implemented.');
   }
 
-  Future<int?> drawBitmap(
+  Future<bool?> drawBitmap(
       {required String image, required int xDest, required int yDest}) {
     throw UnimplementedError('drawBitmap() has not been implemented.');
   }
 
-  Future<int?> drawBitmapEx({required List<int> byteBitmap,
+  Future<bool?> drawBitmapEx({required List<int> byteBitmap,
     required int xDest, required int yDest, required int widthDest, required int heightDest}) {
     throw UnimplementedError('drawBitmapEx() has not been implemented.');
   }

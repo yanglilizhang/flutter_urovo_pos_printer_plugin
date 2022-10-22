@@ -52,7 +52,7 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
       closePrinter(result)
     } else if (call.method == "paperFeed") {
       val arguments = call.arguments as HashMap<*, *>
-      val level = arguments["level"] as Int
+      val level = arguments["length"] as Int
       //level - Number of steps required. The range of Gray level is 0 to 100, 1mm for every 1 units.
       if (level>=0||level<=100) {
         paperFeed(level,result)
@@ -227,10 +227,9 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           printerManager = async { connectPrinterManager() }.await()
           val ret = async { printerManager?.open() }.await()
           if (ret==PRNSTS_OK){
-            if (async { printerManager?.drawBitmapEx(bitmap,xDest,yDest,widthDest,heightDest) }.await()==PRNSTS_OK){
+            if (async { printerManager?.drawBitmapEx(bitmap,xDest,yDest,widthDest,heightDest) }.await()!!>=PRNSTS_OK){
               result.success(true)
             } else{
-              //drawLine failed
               result.success(false)
             }
           } else{
@@ -263,10 +262,9 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           printerManager = async { connectPrinterManager() }.await()
           val ret = async { printerManager?.open() }.await()
           if (ret==PRNSTS_OK){
-            if (async { printerManager?.drawBitmap(bitmap,xDest,yDest) }.await()==PRNSTS_OK){
+            if (async { printerManager?.drawBitmap(bitmap,xDest,yDest) }.await()!!>=PRNSTS_OK){
               result.success(true)
             } else{
-              //drawLine failed
               result.success(false)
             }
           } else{
@@ -308,10 +306,9 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           printerManager = async { connectPrinterManager() }.await()
           val ret = async { printerManager?.open() }.await()
           if (ret==PRNSTS_OK){
-            if (async { printerManager?.drawBarcode(data, x, y, barcodeType, width, height, rotate) }.await()==PRNSTS_OK){
+            if (async { printerManager?.drawBarcode(data, x, y, barcodeType, width, height, rotate) }.await()!!>=PRNSTS_OK){
               result.success(true)
             } else{
-              //drawLine failed
               result.success(false)
             }
           } else{
@@ -356,10 +353,9 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           printerManager = async { connectPrinterManager() }.await()
           val ret = async { printerManager?.open() }.await()
           if (ret==PRNSTS_OK){
-            if (async { printerManager?.drawTextEx(data, x,y,width,height,fontName,fontSize,rotate,style,format) }.await()==PRNSTS_OK){
+            if (async { printerManager?.drawTextEx(data, x,y,width,height,fontName,fontSize,rotate,style,format) }.await()!!>=PRNSTS_OK){
               result.success(true)
             } else{
-              //drawLine failed
               result.success(false)
             }
           } else{
@@ -402,10 +398,9 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           printerManager = async { connectPrinterManager() }.await()
           val ret = async { printerManager?.open() }.await()
           if (ret==PRNSTS_OK){
-            if (async { printerManager?.drawText(data,x,y,fontName,fontSize,bold,italic,rotate) }.await()==PRNSTS_OK){
+            if (async { printerManager?.drawText(data,x,y,fontName,fontSize,bold,italic,rotate) }.await()!! >=PRNSTS_OK){
               result.success(true)
             } else{
-              //drawLine failed
               result.success(false)
             }
           } else{
@@ -513,7 +508,7 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
       }
       printerManager!!.close()
     } else {
-      result.success(false)
+      result.success("error")
     }
   }
 
@@ -525,7 +520,12 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           printerManager = async { connectPrinterManager() }.await()
           val ret = async { printerManager?.open() }.await()
           if (ret==PRNSTS_OK){
-            result.success(printerManager?.clearPage())
+            val state = async { printerManager?.clearPage() }.await()
+            if(state==PRNSTS_OK) {
+              result.success(true)
+            }else{
+              result.success(false)
+            }
           }
         }
       } catch (ex: Exception) {
@@ -619,6 +619,8 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           if (ret==PRNSTS_OK){
             printerManager?.setGrayLevel(level)
             result.success(true)
+          } else {
+            result.success(false)
           }
         }
       } catch (ex: Exception) {
@@ -650,6 +652,8 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
           if (ret==PRNSTS_OK){
             printerManager?.close()
             result.success(true)
+          } else {
+            result.success(false)
           }
         }
       } catch (ex: Exception) {
@@ -681,12 +685,12 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
             //open success
             val re = async { printerManager!!.setupPage(width, height) }.await()
             if (re == PRNSTS_OK) {
-              //
+              result.success(true)
             } else {
-              result.success("setupPage failed")
+              result.success(false)
             }
           } else {
-            result.success("Printer open failed")//
+            result.success(false)//
           }
         }
       } catch (ex: Exception) {
@@ -704,7 +708,7 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
       }
       printerManager?.close()
     } else {
-      result.success(false)
+      result.success(-1)
     }
   }
 

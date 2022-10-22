@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_urovo_pos_printer_plugin_example">
+
+    <uses-permission android:name="smartpos.deviceservice.permission.Printer" />
+
    <application
         android:label="flutter_urovo_pos_printer_plugin_example"
         android:name="${applicationName}"

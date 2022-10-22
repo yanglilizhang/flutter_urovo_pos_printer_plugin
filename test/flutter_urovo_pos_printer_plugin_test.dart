@@ -12,55 +12,55 @@ class MockFlutterUrovoPosPrinterPluginPlatform
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<int?> clearPage() {
+  Future<bool?> clearPage() {
     // TODO: implement clearPage
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> dispose() {
+  Future<bool?> dispose() {
     // TODO: implement dispose
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> drawBarcode({required String data, required int x, required int y, required int barcodeType, required int width, required int height, required int rotate}) {
+  Future<bool?> drawBarcode({required String data, required int x, required int y, required int barcodeType, required int width, required int height, required int rotate}) {
     // TODO: implement drawBarcode
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> drawBitmap({required String image, required int xDest, required int yDest}) {
+  Future<bool?> drawBitmap({required String image, required int xDest, required int yDest}) {
     // TODO: implement drawBitmap
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> drawBitmapEx({required List<int> byteBitmap, required int xDest, required int yDest, required int widthDest, required int heightDest}) {
+  Future<bool?> drawBitmapEx({required List<int> byteBitmap, required int xDest, required int yDest, required int widthDest, required int heightDest}) {
     // TODO: implement drawBitmapEx
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> drawLine({required int x0, required int y0, required int x1, required int y1, required int lineWidth}) {
+  Future<bool?> drawLine({required int x0, required int y0, required int x1, required int y1, required int lineWidth}) {
     // TODO: implement drawLine
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> drawText({required String data, required int x, required int y, required String fontName, required int fontSize, required bool isBold, required bool isItalic, required int rotate}) {
+  Future<bool?> drawText({required String data, required int x, required int y, required String fontName, required int fontSize, required bool isBold, required bool isItalic, required int rotate}) {
     // TODO: implement drawText
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> drawTextEx({required String data, required int x, required int y, required int width, required int height, required String fontName, required int fontSize, required int rotate, required int style, required int format}) {
+  Future<bool?> drawTextEx({required String data, required int x, required int y, required int width, required int height, required String fontName, required int fontSize, required int rotate, required int style, required int format}) {
     // TODO: implement drawTextEx
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> getStatus() {
+  Future<String?> getStatus() {
     // TODO: implement getStatus
     throw UnimplementedError();
   }
@@ -72,7 +72,7 @@ class MockFlutterUrovoPosPrinterPluginPlatform
   }
 
   @override
-  Future<int?> paperFeed(int length) {
+  Future<bool?> paperFeed({required int length}) {
     // TODO: implement paperFeed
     throw UnimplementedError();
   }
@@ -84,26 +84,32 @@ class MockFlutterUrovoPosPrinterPluginPlatform
   }
 
   @override
-  Future<int?> printPage(int rotate) {
+  Future<String?> printPage({required int rotate}) {
     // TODO: implement printPage
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> setGrayLevel(int level) {
+  Future<bool?> setGrayLevel({required int level}) {
     // TODO: implement setGrayLevel
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> setSpeedLevel(int level) {
+  Future<bool?> setSpeedLevel({required int level}) {
     // TODO: implement setSpeedLevel
     throw UnimplementedError();
   }
 
   @override
-  Future<int?> setupPage({required int height, required int width}) {
+  Future<bool?> setupPage({required int height, required int width}) {
     // TODO: implement setupPage
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> printTest() {
+    // TODO: implement printTest
     throw UnimplementedError();
   }
 }

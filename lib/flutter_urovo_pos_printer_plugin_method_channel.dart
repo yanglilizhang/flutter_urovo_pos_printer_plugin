@@ -23,26 +23,26 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
   }
 
   @override
-  Future<String?> printTest() async {
-    final print = await methodChannel.invokeMethod<String>('printTest');
+  Future<bool?> printTest() async {
+    final print = await methodChannel.invokeMethod<bool>('printTest');
     return print;
   }
 
   @override
-  Future<int?> getStatus() async {
-    final status = await methodChannel.invokeMethod<int>('getStatus');
+  Future<String?> getStatus() async {
+    final status = await methodChannel.invokeMethod<String>('getStatus');
     return status;
   }
 
   @override
-  Future<int?> dispose() async {
-    final dispose = await methodChannel.invokeMethod<int>('dispose');
+  Future<bool?> dispose() async {
+    final dispose = await methodChannel.invokeMethod<bool>('dispose');
     return dispose;
   }
 
   @override
-  Future<int?> setupPage({required int height, required int width}) async {
-    final setup = await methodChannel.invokeMethod<int>('setupPage', {
+  Future<bool?> setupPage({required int height, required int width}) async {
+    final setup = await methodChannel.invokeMethod<bool>('setupPage', {
       'height': height,
       'width': width,
     });
@@ -51,40 +51,40 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
 
   //* set gray level
   @override
-  Future<int?> setGrayLevel(int level) async {
-    final setLevel = await methodChannel.invokeMethod("setGrayLevel", [level]);
+  Future<bool?> setGrayLevel({required int level}) async {
+    final setLevel = await methodChannel.invokeMethod("setGrayLevel", {level:level});
     return setLevel;
   }
 
   //* set paper feed
   @override
-  Future<int?> paperFeed(int length) async {
-    final length = await methodChannel.invokeMethod('paperFeed');
-    return length;
+  Future<bool?> paperFeed({required int length}) async {
+    final setLength = await methodChannel.invokeMethod('paperFeed',{'length':length});
+    return setLength;
   }
 
 //* set speed level [0-9]
   @override
-  Future<int?> setSpeedLevel(int level) async {
-    final level = await methodChannel.invokeMethod('setSpeedLevel');
-    return level;
+  Future<bool?> setSpeedLevel({required int level}) async {
+    final setLevel = await methodChannel.invokeMethod('setSpeedLevel',{'level':level});
+    return setLevel;
   }
 
   // * clear page setup
   @override
-  Future<int?> clearPage() async {
+  Future<bool?> clearPage() async {
     return await methodChannel.invokeMethod('clearPage');
   }
 
   //* print page
   @override
-  Future<int?> printPage(int rotate) async {
-    return await methodChannel.invokeMethod('printPage', [rotate]);
+  Future<String?> printPage({required int rotate}) async {
+    return await methodChannel.invokeMethod('printPage', {'rotate':rotate});
   }
 
   //* draw
   @override
-  Future<int?> drawLine({required int x0,
+  Future<bool?> drawLine({required int x0,
     required int y0,
     required int x1,
     required int y1,
@@ -100,7 +100,7 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
 
   //* draw text
   @override
-  Future<int?> drawText({required String data,
+  Future<bool?> drawText({required String data,
     required int x,
     required int y,
     required String fontName,
@@ -122,7 +122,7 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
 
   //* draw text ex
   @override
-  Future<int?> drawTextEx({required String data,
+  Future<bool?> drawTextEx({required String data,
     required int x,
     required int y,
     required int width,
@@ -148,7 +148,7 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
 
   //* draw barcode
   @override
-  Future<int?> drawBarcode({
+  Future<bool?> drawBarcode({
     required String data,
     required int x,
     required int y,
@@ -170,7 +170,7 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
 
   // * draw bitmap
   @override
-  Future<int?> drawBitmap({
+  Future<bool?> drawBitmap({
     required String image,
     required int xDest,
     required int yDest,
@@ -184,7 +184,7 @@ class MethodChannelFlutterUrovoPosPrinterPlugin extends FlutterUrovoPosPrinterPl
 
   // * draw bitmap ex
   @override
-  Future<int?> drawBitmapEx({
+  Future<bool?> drawBitmapEx({
     required List<int> byteBitmap,
     required int xDest,
     required int yDest,

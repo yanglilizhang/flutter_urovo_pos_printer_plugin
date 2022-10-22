@@ -10,43 +10,43 @@ class FlutterUrovoPosPrinterPlugin {
     return FlutterUrovoPosPrinterPluginPlatform.instance.initPrinter();
   }
 
-  Future<String?> print() {
-    return FlutterUrovoPosPrinterPluginPlatform.instance.print();
+  Future<bool?> printTest() {
+    return FlutterUrovoPosPrinterPluginPlatform.instance.printTest();
   }
 
-  Future<int?> getStatus() {
+  Future<String?> getStatus() {
     return FlutterUrovoPosPrinterPluginPlatform.instance.getStatus();
   }
 
-  Future<int?> dispose() {
+  Future<bool?> dispose() {
     return FlutterUrovoPosPrinterPluginPlatform.instance.dispose();
   }
 
-  Future<int?> setupPage({required int height, required int width}) {
+  Future<bool?> setupPage({required int height, required int width}) {
     return FlutterUrovoPosPrinterPluginPlatform.instance.setupPage(height: height, width: width);
   }
 
-  Future<int?> setGrayLevel(int level) {
-    return FlutterUrovoPosPrinterPluginPlatform.instance.setGrayLevel(level);
+  Future<bool?> setGrayLevel({required int level}) {
+    return FlutterUrovoPosPrinterPluginPlatform.instance.setGrayLevel(level:level);
   }
 
-  Future<int?> paperFeed(int length) {
-    return FlutterUrovoPosPrinterPluginPlatform.instance.paperFeed(length);
+  Future<bool?> paperFeed({required int length}) {
+    return FlutterUrovoPosPrinterPluginPlatform.instance.paperFeed(length:length);
   }
 
-  Future<int?> setSpeedLevel(int level) {
-    return FlutterUrovoPosPrinterPluginPlatform.instance.setSpeedLevel(level);
+  Future<bool?> setSpeedLevel(int level) {
+    return FlutterUrovoPosPrinterPluginPlatform.instance.setSpeedLevel(level:level);
   }
 
-  Future<int?> clearPage() {
+  Future<bool?> clearPage() {
     return FlutterUrovoPosPrinterPluginPlatform.instance.clearPage();
   }
 
-  Future<int?> printPage(int rotate) {
-    return FlutterUrovoPosPrinterPluginPlatform.instance.printPage(rotate);
+  Future<String?> printPage({required int rotate}) {
+    return FlutterUrovoPosPrinterPluginPlatform.instance.printPage(rotate:rotate);
   }
 
-  Future<int?> drawLine(
+  Future<bool?> drawLine(
       {required int x0,
         required int y0,
         required int x1,
@@ -61,7 +61,7 @@ class FlutterUrovoPosPrinterPlugin {
     );
   }
 
-  Future<int?> drawText(
+  Future<bool?> drawText(
       {required String data,
         required int x,
         required int y,
@@ -82,7 +82,7 @@ class FlutterUrovoPosPrinterPlugin {
     );
   }
 
-  Future<int?> drawTextEx(
+  Future<bool?> drawTextEx(
       {required String data,
         required int x,
         required int y,
@@ -108,7 +108,7 @@ class FlutterUrovoPosPrinterPlugin {
     );
   }
 
-  Future<int?> drawBarcode(
+  Future<bool?> drawBarcode(
       {required String data,
         required int x,
         required int y,
@@ -127,7 +127,7 @@ class FlutterUrovoPosPrinterPlugin {
     );
   }
 
-  Future<int?> drawBitmap(
+  Future<bool?> drawBitmap(
       {required String image, required int xDest, required int yDest}) {
     return FlutterUrovoPosPrinterPluginPlatform.instance.drawBitmap(
       image: image,
@@ -136,7 +136,7 @@ class FlutterUrovoPosPrinterPlugin {
     );
   }
 
-  Future<int?> drawBitmapEx(
+  Future<bool?> drawBitmapEx(
       {required List<int> byteBitmap,
         required int xDest,
         required int yDest,

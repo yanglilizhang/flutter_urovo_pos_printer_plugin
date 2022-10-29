@@ -766,12 +766,22 @@ class FlutterUrovoPosPrinterPlugin: FlutterPlugin, MethodCallHandler {
       result.success(false)
     }
   }
+  var mPrinterManager: PrinterManager? = null
+
+  open fun getPrinterManager(): PrinterManager? {
+    if (mPrinterManager == null) {
+      mPrinterManager = PrinterManager()
+      mPrinterManager!!.open()
+    }
+    return mPrinterManager
+  }
 
   private fun initPrinter(): Boolean {
     return try {
       val className = "android.device.PrinterManager"
       Class.forName(className).newInstance()
-      true
+      val ret = getPrinterManager()?.status
+      ret!! >=PRNSTS_OK
     } catch (ex: ClassNotFoundException) {
       println("catch : $ex");
       false

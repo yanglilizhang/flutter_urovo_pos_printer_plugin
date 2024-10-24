@@ -1,6 +1,6 @@
 # flutter_urovo_pos_printer_plugin
 
-A new Flutter project.
+Basic Flutter/Dart classes for urovo printing. Ticket class generates urovo print commands that can be sent to a urovo pos thermal printer.
 
 ## Getting Started
 

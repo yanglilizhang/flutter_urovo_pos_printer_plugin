@@ -1,7 +1,7 @@
 name: flutter_urovo_pos_printer_plugin
 description: A new Flutter project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/safvanp/flutter_urovo_pos_printer_plugin
 
 environment:
   sdk: '>=2.18.0 <3.0.0'

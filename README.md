@@ -14,3 +14,8 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 PrintManager or Device [urovo.com](https://www.urovo.com/developer/android/device/PrinterManager.html)
+
+## https://github.com/kgoofori/urovo_printer
+## https://github.com/princenyamadi/urovo_pos_printer_plugin_flutter
+## https://github.com/weisen0304/flutter_pda
+## https://github.com/snave00/flutter_urovo_scan

@@ -4,7 +4,8 @@ version: 0.0.2
 homepage: https://github.com/safvanp/flutter_urovo_pos_printer_plugin
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+#  sdk: '>=2.18.0 <3.0.0'
+  sdk: ^3.5.0
   flutter: ">=2.5.0"
 
 dependencies:
